@@ -10,22 +10,22 @@ router.get('/edit/:id', async (req, res) =>{
     const product = await Product.findById(req.params.id)
     res.render('products/edit' ,{product: product})
 })
-
-router.get('/:id', async (req,res) =>{
-    const product = await Product.findById(req.params.id)
+//Masks the id header using slug
+router.get('/:slug', async (req,res) =>{
+    const product = await Product.findOne({slug: req.params.slug})
 
     if(product == null) res.redirect('/')
     res.render('products/show', {product : product})
 
 })
-
+//Create method
 router.post('/', async (req, res, next) => {    
 
     req.product = new Product()
     next()
     
 }, saveArticleAndRedirect('add'))
-
+//Edit method
 router.put('/:id',async (req, res, next) => {    
 
     req.product = await Product.findById(req.params.id)
@@ -39,18 +39,21 @@ function saveArticleAndRedirect(path){
         let product = req.product
         product.name = req.body.name,
         product.supplied = req.body.supplied,
-        product.quantity = req.body.quantity
-        
+        product.quantity = req.body.quantity,
+        product.supplier = req.body.supplier,
+        product.shelves = req.body.shelves,
+        product.status = req.body.status
+    
         try{
             product =await product.save()
-            res.redirect('/products/' + product.id)
+            res.redirect('/products/' + product.slug)
         }catch (e) {
             res.render('products/'+path, {product:product})
         }
         
     }
 }
-
+// Delete method
 router.delete('/:id', async (req,res) => {
     await Product.findByIdAndDelete(req.params.id)
     res.redirect('/')
