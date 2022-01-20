@@ -24,7 +24,13 @@
                   </div>
 
                <div class ="card-text mb-2"><%= products.quantity%></div>
-               
+               <a href = "products/<%= products.id%>" class = "btn btn-primary">See more about product</a>
+               <a href = "/products/edit/<%= products.id%>"
+                class= "btn btn-info">Edit</a>
+               <form action ="/products/<%= products.id%>?_method=DELETE" method = "POST" class = 
+                "d-inline">
+                   <button type = "submit" class ="btn btn-danger">Delete</button>
+               </form>
               </div>
             </div>
 
