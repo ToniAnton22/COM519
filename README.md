@@ -75,7 +75,7 @@ Pressing "save" will give you the object, and redirect you to said object, while
 
 As you can see, the object had been created, and all the data is being displayed. As you can see from the link above the object, the name of the object is displayed instead of the id. I have used slugify to use the object name as a "slug" variable, and find the object and display it in the url instead of the id of the object, as I have considered the overall look, unapealing.
 
-[slug function]
+[slugify function]
 
 (![image](https://user-images.githubusercontent.com/72076515/150559684-ad036e2b-6526-4723-b92a-83c94342a918.png)
 
