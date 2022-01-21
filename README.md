@@ -1,7 +1,9 @@
 # COM519
 ## How to Setup the Project
 #### Instructions
+
 -Download the zip file of the project.
+
 -Unzip it wherever you want.
 -Open the folder using Visual Studio Code.
 -Open new terminal.
